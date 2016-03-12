@@ -1,0 +1,8 @@
+<ul>
+<% @subs.each do |subr| %>
+  <li><%= link_to subr.title, sub_url(subr) %><br>
+  <% if current_user && current_user.id == subr.moderator_id %>
+    <%= link_to "Edit #{subr.title}", edit_sub_url(subr) %>
+  <% end %></li>
+<% end %>
+</ul>

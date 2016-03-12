@@ -1,0 +1,25 @@
+<% provide(:title, "create a new game") %>
+
+<h1> Schedule a game </h1>
+
+<%= form_for(@game) do |f| %>
+  <%= f.label :league_id %>
+  <%= f.select :league_id, list_of_leagues %><br>
+
+  <%= f.label :team_1_id, "home"%>
+  <%= f.select :team_1_id, list_of_teams %><br>
+
+  <%= f.label :team_2_id, "away" %>
+  <%= f.select :team_2_id, list_of_teams %><br>
+
+  <%= f.label :game_date, "date" %>
+  <%= f.date_field :game_date %><br>
+
+  <%= f.label :game_time, "game time" %>
+  <%= f.select :game_time, GlobalConstants::GAME_START_TIMES %><br>
+
+  <%= f.label :field_id %>
+  <%= f.select :field_id, list_of_fields %><br>
+
+  <%= f.submit "schedule game" %>
+<% end %>

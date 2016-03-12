@@ -1,0 +1,51 @@
+<% action = post.persisted? ? post_url(post) : posts_url %>
+<% method = post.persisted? ? "PATCH" : "POST" %>
+<% submit_text = post.persisted? ? "Edit Post" : "Create Post" %>
+<% default_subr = default_subreddit(post, params[:sub_id]) %>
+
+<form action=" <%= action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <%= auth_token %>
+
+  <label for="post_title">Post Title</label>
+  <input type="text"
+         name="post[title]"
+         id="post_title"
+         value="<%= post.title %>"><br>
+
+  <label for="post_url">URL (optional)</label>
+  <input type="text"
+         name="post[url]"
+         id="post_url"
+         value="<%= post.url %>"><br>
+
+  <!-- <label for="post_sub_name">subreddit<label>
+  <input type="text"
+         name="post[sub_name]"
+         id="post_sub_name"
+         value="<%= default_subr %>"><br> -->
+
+  <br>
+  to which subreddits?
+  <br>
+
+  <input type="hidden" name="post[sub_ids][]" value="">
+
+  <% subs.each do |subr| %>
+
+    <input  type="checkbox"
+            name="post[sub_ids][]"
+            id="<%= subr.title %>"
+            value="<%= subr.id %>">
+    <%= subr.title %>
+    <br>
+  <% end %>
+
+  <label for="post_content">Text (optional)</label>
+  <textarea name="post[content]"
+            id="post_content"
+            value="<%= post.content %>">
+  </textarea><br>
+
+  <input type="Submit" value="<%= submit_text %>">
+</form>

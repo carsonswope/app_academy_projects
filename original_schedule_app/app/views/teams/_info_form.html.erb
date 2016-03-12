@@ -1,0 +1,34 @@
+<%= form_for(@team) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :contact_name %>
+  <%= f.text_field :contact_name %>
+  <br>
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %>
+  <br>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <br><br>
+  <%= f.check_box :before_req %>
+  game times must be before
+  <%= f.select :before_req_time, GlobalConstants::GAME_START_TIMES %>
+  <br>
+  <%= f.check_box :after_req %>
+  game times must be after
+  <%= f.select :after_req_time, GlobalConstants::GAME_START_TIMES %>
+  <br><br>
+  <% 0.upto(9) do |req_number| %>
+    <%= f.check_box "day_req_#{req_number}".to_sym %>
+    game times on
+    <%= f.date_field "day_req_#{req_number}_date".to_sym %>
+    must be
+    <%= f.select "day_req_#{req_number}_before_after".to_sym, [["before", true], ["after", false]] %>
+    <%= f.select "day_req_#{req_number}_time".to_sym, GlobalConstants::GAME_START_TIMES %>
+    <br><br>
+  <% end %>
+
+  <% message = form_type == :edit ? "confirm changes" : "create team" %>
+  <%= f.submit message %>
+<% end %>

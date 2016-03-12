@@ -1,0 +1,25 @@
+<% provide(:title, "auto-scheduler") %>
+
+<h1> auto scheduler </h1>
+
+<%= form_for :auto_schedule_request, {url: 'auto_schedule_execute'} do |f| %>
+
+  <h2> leagues to schedule </h2>
+  <table>
+    <tr>
+      <td></td>
+      <td>League</td>
+      <td>info </td>
+    </tr>
+    <% League.all.each do |league| %>
+      <tr>
+        <td><%= f.check_box "#{league.id}".to_sym %></td>
+        <td><%= "#{league.name}" %></td>
+        <td>info</td>
+      </tr>
+    <% end %>
+  </table>
+  <br>
+  <%= f.submit "perform auto schedule" %>
+
+<% end %>

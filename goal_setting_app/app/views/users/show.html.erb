@@ -1,0 +1,17 @@
+<h2><%= @user.username %></h2>
+
+<%= link_to "Make Goal", new_goal_url if current_user %>
+
+<h4> Goals: </h4>
+<% @user.goals.each do |goal| %>
+  <% next if goal.pprivate && @user.id != current_user.id %>
+  <%= link_to goal.description, goal_url(goal) %><br>
+  <%= "private" if goal.pprivate %><br>
+  <%= render 'goals/done_button', goal: goal %><br>
+<% end %>
+
+<% @user.comments.each do |comment| %>
+  <%= render 'comments/one_comment', comment: comment %>
+<% end %>
+
+<%= render 'comments/form', subject: @user %>

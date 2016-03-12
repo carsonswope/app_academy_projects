@@ -1,0 +1,23 @@
+<% provide(:title, @team.name) %>
+
+<h1> team info </h1>
+
+<%= @team.name %><br>
+<%= @team.contact_name %><br>
+<%= @team.email %><br>
+<%= @team.phone_number %><br>
+
+<br>
+schedule requests:<br><br>
+
+<%= render 'teams/schedule_requests_list', team: @team %>
+
+<br>
+
+<%= link_to "edit team info", edit_team_path(@team) %>
+
+<br>
+
+<h2> schedule </h2>
+
+<%= render 'shared/schedule', schedule_request: {team: @team.id} %>

@@ -1,0 +1,9 @@
+<table>
+  <% league.active_relationships.each do |relationship| %>
+    <tr>
+      <td><% team = Team.find(relationship.team_id) %></td>
+      <td><%= link_to team.name, team_path(team) %></td>
+      <td><%= link_to "remove team from league", relationship, method: :delete %></td>
+    </tr>
+  <% end %>
+</table>

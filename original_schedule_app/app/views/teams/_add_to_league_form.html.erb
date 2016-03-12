@@ -1,0 +1,5 @@
+<%= form_for(@add_team_to_league) do |f| %>
+  <%= f.hidden_field :team_id, :value => team.id %>
+  <%= f.select :league_id, list_of_non_member_leagues(team) %>
+  <%= f.submit "add team to league" %>
+<% end %>

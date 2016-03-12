@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RedditClone</title>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'shared/user_header' %>
+<br>
+<%= flash[:errors] %>
+<br>
+<%= flash[:message] %>
+<br>
+
+<%= yield %>
+
+</body>
+</html>

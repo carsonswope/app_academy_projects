@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <td> day  </td>
+    <td> Date </td>
+    <td> Time </td>
+    <td> Field </td>
+    <td> Home Team </td>
+    <td> H score </td>
+    <td> Away Team </td>
+    <td> A score </td>
+  </tr>
+
+  <% games_list = get_games_list(schedule_request) %>
+  <% games_list.each do |game| %>
+    <tr>
+      <td><%= print_day(game.info[:date]) %></td>
+      <td><%= print_date(game.info[:date]) %></td>
+      <td><%= print_time(game.info[:time]) %></td>
+      <td><%= game.info[:field].name %></td>
+      <td><%= game.info[:home_team].name %></td>
+      <td></td>
+      <td><%= game.info[:away_team].name %></td>
+      <td></td>
+    </tr>
+  <% end %>
+</table>

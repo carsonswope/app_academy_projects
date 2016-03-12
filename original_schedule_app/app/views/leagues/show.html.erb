@@ -1,0 +1,18 @@
+<% provide(:title, @league.name) %>
+
+<h1> league info: </h1>
+
+League name: <%= @league.name%><br>
+start date: <%= @league.first_game_date %><br>
+end date:<%= @league.last_game_date %><br>
+number of games per team: <%= @league.number_of_games %><br>
+game dates and times:
+<%= render 'leagues/game_days_list', league: @league %>
+
+<h2>teams</h2>
+<%= render 'leagues/team_list', league: @league %>
+
+<%= render 'leagues/games_against_table', league: @league %>
+
+<h2>Schedule</h2>
+<%= render 'shared/schedule', schedule_request: {league: @league.id} %>

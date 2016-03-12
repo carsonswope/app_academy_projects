@@ -1,0 +1,22 @@
+<% provide(:title, "teams list") %>
+
+<h1> Team list: </h1>
+
+<table>
+    <tr>
+      <td>Team Name       </td>
+      <td>Leagues</td>
+      <td></td>
+    </tr>
+  <% @teams.each do |team| %>
+    <tr>
+      <td><%= link_to team.name, team_path(team) %></td>
+      <td><%= render 'teams/league_list', team: team %></td>
+      <td><%= render 'teams/add_to_league_form', team: team %></td>
+      <td><%= link_to "edit team info", edit_team_path(team) %></td>
+      <td><%= link_to "delete team", team, method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br><%= link_to "add a team", new_team_path %>

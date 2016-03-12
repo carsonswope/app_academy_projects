@@ -1,0 +1,8 @@
+<% provide(:title, "field list") %>
+
+<h1> Field list </h1>
+
+<% @fields.each do |field| %>
+  <%= link_to field.name, field %>
+  <%= link_to "delete field", field, method: :delete %><br>
+<% end %>

@@ -1,0 +1,6 @@
+<% provide(:title, @field.name) %>
+
+<h1><%= @field.name %></h1>
+<h2> schedule: </h2>
+
+<%= render 'shared/schedule', schedule_request: {field: @field.id} %>

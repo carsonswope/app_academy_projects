@@ -1,0 +1,27 @@
+<% provide(:title, "league list") %>
+
+<h1>League list</h1>
+
+<table>
+  <tr>
+    <td>League name</td>
+    <td>Start Date</td>
+    <td>End Date</td>
+    <td>number of games</td>
+    <td>game days/ideal times</td>
+  </tr>
+
+  <% @leagues.each do |league| %>
+    <tr>
+      <td><%= link_to league.name, league_path(league) %></td>
+      <td><%= print_date(league.first_game_date) %></td>
+      <td><%= print_date(league.last_game_date) %></td>
+      <td><%= league.number_of_games %></td>
+      <td><%= render 'leagues/game_days_list', league: league %></td>
+      <td><%= link_to "delete league", league, method: :delete %>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<%= link_to "create a league", new_league_path %><br>

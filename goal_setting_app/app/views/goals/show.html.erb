@@ -1,0 +1,10 @@
+<h3> <%= @goal.description %> </h3>
+by <%= link_to @goal.user.username, user_url(@goal.user) %><br>
+
+<br>
+Comments:<br>
+<% @goal.comments.each do |comment| %>
+  <%= render 'comments/one_comment', comment: comment %>
+<% end %>
+<br>
+<%= render 'comments/form', subject: @goal %>

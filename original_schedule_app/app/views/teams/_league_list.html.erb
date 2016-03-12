@@ -1,0 +1,5 @@
+<% leagues_currently_in(team).each do |league_id| %>
+  <% league = League.find(league_id) %>
+  <%= link_to league.name, league_path(league) %>
+  <br>
+<% end %>

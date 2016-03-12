@@ -1,0 +1,29 @@
+Models:
+
+
+Game:
+  -location
+  -time
+  -league
+  -home team
+  -away team
+  -game type
+
+Location:
+  -name
+
+League:
+  -teams
+  -game times
+
+Team:
+  -name
+  -contact name
+  -contact phone number
+  -contact email
+  -unavailable times
+  -league
+
+Game type
+  -duration
+  

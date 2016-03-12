@@ -1,0 +1,7 @@
+<%= @sub.title %><br>
+<%= @sub.description %><br>
+<ul>
+<% @sub.posts.each do |post| %>
+  <li><%= post_info(post) %></li>
+<% end %>
+</ul>

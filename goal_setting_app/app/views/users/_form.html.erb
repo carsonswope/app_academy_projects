@@ -1,0 +1,13 @@
+<% action = form_type == "Sign Up" ? users_url : session_url %>
+<% button = form_type == "Sign Up" ? "Sign Up" : "Sign In" %>
+<form action="<%= action %>" method="POST">
+  <%= auth_token %>
+  <label for="username">Username</label>
+  <input type="text" name="user[username]" value="<%= user.username %>" id="username">
+
+  <label for="password">Password</label>
+  <input type="password" name="user[password]" value="<%= user.password %>" id="password">
+
+  <input type="submit" value="<%= button %>">
+
+</form>

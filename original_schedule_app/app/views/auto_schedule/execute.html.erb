@@ -1,0 +1,7 @@
+<% provide(:title, "executre!") %>
+
+<% @leagues_remaining.each do |league_id| %>
+  <%= League.find(league_id).name  %><br>
+<% end %>
+
+<%= @reschedules %>

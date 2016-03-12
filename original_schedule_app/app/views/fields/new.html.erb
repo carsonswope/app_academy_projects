@@ -1,0 +1,13 @@
+<% provide(:title, "create a field") %>
+
+<h1> Create a field </h1>
+
+<%= form_for(@field) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :field_type %>
+  <%= f.select :field_type, GlobalConstants::FIELD_TYPES %>
+  <br>
+  <%= f.submit "create field" %>
+<% end %>

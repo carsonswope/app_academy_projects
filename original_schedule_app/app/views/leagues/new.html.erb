@@ -1,0 +1,42 @@
+<% provide(:title, "Create a league") %>
+
+<h1>Create a league</h1>
+
+<%= form_for(@league) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br><br>
+
+  <table>
+    <tr>
+      <td></td>
+      <td> Game days </td>
+      <td> first game </td>
+      <td> last game </td>
+    </tr>
+
+    <% GlobalConstants::DAYS.each do |day| %>
+      <tr>
+        <td><%= f.check_box day %></td>
+        <td><%= day %></td>
+        <td><%= f.select "#{day}_first_game".to_sym, GlobalConstants::GAME_START_TIMES %></td>
+        <td><%= f.select "#{day}_last_game".to_sym, GlobalConstants::GAME_START_TIMES %></td>
+      </tr>
+    <% end %>
+
+  </table>
+
+  <br>
+  <%= f.label :first_game_date %>
+  <%= f.date_field :first_game_date %>
+  <br>
+  <%= f.label :last_game_date %>
+  <%= f.date_field :last_game_date %>
+  <br>
+  <br>
+  <%= f.label :number_of_games, "number of games per team" %>
+  <%= f.text_field :number_of_games %>
+  <br>
+  <br>
+  <%= f.submit "create league" %>
+<% end %>

@@ -1,0 +1,7 @@
+<% if current_user %>
+  <%= current_user.name %>
+  <%= button_to "Log out", session_url, method: :delete %>
+<% else %>
+  <%= link_to "Log in", new_session_url %> or
+  <%= link_to "Register", new_user_url %>
+<% end %>

@@ -1,0 +1,4 @@
+<%= comment.author.username %> <br>
+<%= comment.body %> <br>
+<%= button_to "Remove Comment", comment_url(comment), method: :delete if current_user.id == comment.user_id %>
+<br><br>

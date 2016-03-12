@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <td></td>
+    <% league.active_relationships.each do |relationship| %>
+      <td><%= Team.find(relationship.team_id).name %></td>
+    <% end %>
+  </tr>
+
+  <% league.active_relationships.each do |relationship| %>
+    <tr>
+      <% team = Team.find(relationship.team_id) %>
+      <td><%= team.name %></td>
+      <% league.active_relationships.each do |other| %>
+        <% other_team = Team.find(other.team_id) %>
+        <td><%= team.games(opponent: other_team.id).length %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

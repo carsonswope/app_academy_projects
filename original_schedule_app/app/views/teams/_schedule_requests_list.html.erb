@@ -1,0 +1,23 @@
+<% if team.before_req %>
+  games to start before
+  <%= team.before_req_time.to_s %>
+<% end %>
+
+<br>
+
+<% if team.after_req %>
+  games to start after
+  <%= team.after_req_time.to_s %>
+<% end %>
+
+<br><br>
+
+<% 0.upto(9) do |req_number| %>
+  <% request = request_data(req_number, team) %>
+  <% if request[:valid_request] %>
+    <%= "on #{request[:date]}, " %>
+    <%= "games to start #{request[:req_type]} " %>
+    <%= "#{request[:time]}" %>
+    <br>
+  <% end %>
+<% end %>
